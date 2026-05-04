@@ -1,7 +1,7 @@
 # Developer Log
 ## Programming Assignment 2
 
-### Entry 1
+### Entry 1 ###
 **Date:** 2026-05-04
 **Entry Type:** Edge Case 
 **Task worked on:** Tested the base cases to ensure they branched when needed
@@ -15,3 +15,11 @@
 **Task worked on:** printVisited function
 **Decision:** Attempting to debug was getting difficult. I needed a way to see any possible errors
 **Resolution:** I created a function to print the Visited function, allowing me to see if there was an issue
+---
+### Entry 3
+**Date:** 2026-05-04
+**Entry Type:** Bug Fix
+**Task worked on:** dfs function
+**Issue or decision:** The visited array was not being output as expected.  
+**What I tried:** I printed the coordinates being visited to see if there was an issue with the recursive function calls
+**Fix:** I forgot to change the enter values within the dfs function call in the main function after testing edge cases
