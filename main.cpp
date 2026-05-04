@@ -114,19 +114,18 @@ void printPath(pair<int,int> exitcell,
     }
 }
 
+
+
 // ----------------------------------------------------------
 // STUDENTS IMPLEMENT DFS HERE
 // Add arguments, return type, and logic
 // ----------------------------------------------------------
- bool dfs(int ent_r, int ent_c, const
+ bool dfs(int r, int c, const
           vector<vector<int>>& maze,
           vector<vector<bool>> visited,
           vector<vector<int>> parent_r,
           vector<vector<int>>parent_c,
           int exit_r, int exit_c) {
-
-    int r = ent_r;
-    int c = ent_c;
 
     //BASE CASES
 
@@ -134,27 +133,35 @@ void printPath(pair<int,int> exitcell,
 
 
     if (r >= maze.size() || c >= maze[0].size() || r < 0 || c < 0 || maze[r][c] == 1) {
-        cout << "\nInvalid entry\n";
-
         return false;
     }
-    cout << "Maze value: " << maze[r][c] << endl;
+
 
     if (visited[r][c] == true ) {
         return false;
     }
     visited[r][c] = true;
 
+
     if (r == exit_r && c == exit_c) {
         return true;
     }
 
+    for (int i = 0; i < 4; i++) {
 
+        int newRow = r + dr[i];
+        int newCol = c + dc[i];
 
+        parent_r[newRow][newCol] = r;
+        parent_c[newRow][newCol] = c;
 
+        if (dfs(newRow, newCol, maze, visited, parent_r, parent_c, exit_r, exit_c)) {
+            return true;
+        }
 
-     // Your code here
-    return 0;
+    }
+
+    return false;
  }
 
 
@@ -202,11 +209,11 @@ int main() {
     // STUDENT WORK:
     // If found, print the path
     // ------------------------------------------------------
-    // if (found) {
-    //     printPath(exitcell, parent_r, parent_c, ent_r, ent_c);
-    // } else {
-    //     cout << "\nNo path exists.\n";
-    // }
+     if (found) {
+         printPath(exitcell, parent_r, parent_c, ent_r, ent_c);
+     } else {
+         cout << "\nNo path exists.\n";
+     }
 
     return 0;
 }
