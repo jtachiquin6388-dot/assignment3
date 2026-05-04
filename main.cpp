@@ -131,9 +131,14 @@ void printPath(pair<int,int> exitcell,
     //BASE CASES
 
 
-    if (r >= maze.size() || c >= maze[0].size() || r < 0 || c < 0 || maze[r][c] == 0) {
+
+
+    if (r >= maze.size() || c >= maze[0].size() || r < 0 || c < 0 || maze[r][c] == 1) {
+        cout << "\nInvalid entry\n";
+
         return false;
     }
+    cout << "Maze value: " << maze[r][c] << endl;
 
     if (visited[r][c] == true ) {
         return false;
@@ -190,7 +195,8 @@ int main() {
     // STUDENT WORK:
     // Call your DFS, track visited, and fill parent_r and parent_c
     // ------------------------------------------------------
-    // bool found = dfs(ent_r, ent_c, maze, visited, parent_r, parent_c, exit_r, exit_c);
+
+    bool found = dfs(2, 3, maze, visited, parent_r, parent_c, exit_r, exit_c);
 
     // ------------------------------------------------------
     // STUDENT WORK:
