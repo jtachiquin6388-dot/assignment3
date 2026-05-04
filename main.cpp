@@ -114,8 +114,23 @@ void printPath(pair<int,int> exitcell,
     }
 }
 
+// ----------------------------------------------------------
+// helper function
+// ----------------------------------------------------------
+void printVisited(vector<vector<bool>>& visited)
+{
+    int N = visited.size();
+    int M = visited[0].size();
 
+    cout << "\nVisited:\n";
+    for (int r = 0; r < N; r++) {
+        for (int c = 0; c < M; c++) {
 
+            cout << visited[r][c] << " ";
+        }
+        cout << "\n";
+    }
+}
 // ----------------------------------------------------------
 // STUDENTS IMPLEMENT DFS HERE
 // Add arguments, return type, and logic
@@ -128,6 +143,7 @@ void printPath(pair<int,int> exitcell,
           int exit_r, int exit_c) {
 
     //BASE CASES
+    cout << "current:" "(" << r << ", " << c << ")\n";
 
 
 
@@ -141,6 +157,8 @@ void printPath(pair<int,int> exitcell,
         return false;
     }
     visited[r][c] = true;
+
+    printVisited(visited);
 
 
     if (r == exit_r && c == exit_c) {
@@ -203,7 +221,7 @@ int main() {
     // Call your DFS, track visited, and fill parent_r and parent_c
     // ------------------------------------------------------
 
-    bool found = dfs(2, 3, maze, visited, parent_r, parent_c, exit_r, exit_c);
+    bool found = dfs(ent_r, ent_c, maze, visited, parent_r, parent_c, exit_r, exit_c);
 
     // ------------------------------------------------------
     // STUDENT WORK:
