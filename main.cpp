@@ -149,55 +149,54 @@ void printParents(const vector<vector<int>>& parent)
 // STUDENTS IMPLEMENT DFS HERE
 // Add arguments, return type, and logic
 // ----------------------------------------------------------
-bool dfs(int r, int c, const
-         vector<vector<int>>& maze,
-         vector<vector<bool>> &visited,
-         vector<vector<int>> &parent_r,
-         vector<vector<int>> &parent_c,
-         int exit_r, int exit_c) {
-
-    //BASE CASES
-    cout << "current:" "(" << r << ", " << c << ")\n";
+bool dfs(int r, int c,
+        const vector<vector<int>> &maze,
+        vector<vector<bool>> &visited,
+        vector<vector<int>> &parent_r,
+        vector<vector<int>> &parent_c,
+        int exit_r, int exit_c) {
 
 
-
-
-    if (r >= maze.size() || c >= maze[0].size() || r < 0 || c < 0 || maze[r][c] == 1) {
-        return false;
-    }
-
-
-    if (visited[r][c] == true ) {
-        return false;
-    }
     visited[r][c] = true;
 
-    printVisited(visited);
 
-
+    //BASE CASES
     if (r == exit_r && c == exit_c) {
         return true;
     }
 
+
+    // RECURSIVE CASE
     for (int i = 0; i < 4; i++) {
+
 
         int newRow = r + dr[i];
         int newCol = c + dc[i];
 
-        parent_r[newRow][newCol] = r;
-        parent_c[newRow][newCol] = c;
 
-        //printParents(parent_r);
-        //printParents(parent_c);
+        if (newCol >= 0 && newCol < maze[0].size() && newRow >= 0 && newRow < maze.size() && maze[newRow][newCol] == 0) {
+            if (visited[newRow][newCol] == 0) {
+                parent_r[newRow][newCol] = r;
+                parent_c[newRow][newCol] = c;
 
-        if (dfs(newRow, newCol, maze, visited, parent_r, parent_c, exit_r, exit_c)) {
-            return true;
+
+                if (dfs(newRow, newCol, maze, visited, parent_r, parent_c, exit_r, exit_c)) {
+                    return true;
+                }
+            }
+
+
         }
+
+
+
 
     }
 
+
     return false;
 }
+
 
 
 // ----------------------------------------------------------
