@@ -37,3 +37,23 @@
 **Issue:** The visited array would occasionally either not be printed or would be incorrect. When the array was correct, the printPath function would cause an error.
 **What I tried:** I checked the code for every instance where these arrays were used to see if there was a possible mistake. 
 **Fix:** The dfs function was passing the array by value rather than reference, causing issues when they were being manipulated. 
+
+---
+
+### Entry 5
+**Date:** 2026-05-04
+**Entry Type:** Engineering Decision
+**Task worked on:** Creating the printPatent function
+**Decision:** I needed to observe how the parent arrays were being manipulated throughout the dfs function calls 
+**Resolution:** Created a function to print the array and included it after the arrays are manipulated in the dfs function. 
+
+--- 
+
+### Entry 6
+**Date:** 2026-05-04
+**Entry Type:** Edge Case
+**Task worked on:** parent arrays within the dfs function
+**Issue:** The function would occasionally raise an error when after the first recursive call of dfs and when printPath is called. 
+**Error message:** Process finished with exit code -1073741571 (0xC00000FD)
+**What I tried:** I added conditional branches before editing the parent array to ensure they did not access an out of bound memeory addess. 
+**Fix:** I moved all conditional statements to be checked right before the parent arrays and the recursive call of the dfs function. 
