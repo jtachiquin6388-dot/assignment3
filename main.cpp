@@ -1,10 +1,11 @@
 //
-// Copied by Jairo Tachiquin
+// Copied by from
 //
 
 #include <iostream>
 #include <vector>
 #include <cstdlib>
+
 #include <ctime>
 
 using namespace std;
@@ -117,9 +118,39 @@ void printPath(pair<int,int> exitcell,
 // STUDENTS IMPLEMENT DFS HERE
 // Add arguments, return type, and logic
 // ----------------------------------------------------------
-// bool dfs(……) {
-//     // Your code here
-// }
+ bool dfs(int ent_r, int ent_c, const
+          vector<vector<int>>& maze,
+          vector<vector<bool>> visited,
+          vector<vector<int>> parent_r,
+          vector<vector<int>>parent_c,
+          int exit_r, int exit_c) {
+
+    int r = ent_r;
+    int c = ent_c;
+
+    //BASE CASES
+
+
+    if (r >= maze.size() || c >= maze[0].size() || r < 0 || c < 0 || maze[r][c] == 0) {
+        return false;
+    }
+
+    if (visited[r][c] == true ) {
+        return false;
+    }
+    visited[r][c] = true;
+
+    if (r == exit_r && c == exit_c) {
+        return true;
+    }
+
+
+
+
+
+     // Your code here
+    return 0;
+ }
 
 
 // ----------------------------------------------------------
